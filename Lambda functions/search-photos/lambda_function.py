@@ -4,74 +4,100 @@ import boto3
 import random
 from elasticsearch import Elasticsearch, RequestsHttpConnection
 
-# Configure logger to print the log messages
 logger = logging.getLogger()
-logger.setLevel(logging.INFO)  # INFO level is typically suitable for production environments
+logger.setLevel(logging.DEBUG)
 
-headers = {"Content-Type": "application/json"}
 region = 'us-east-1'
 lex = boto3.client('lex-runtime', region_name=region)
 
 def lambda_handler(event, context):
-    logger.info(f'Event received: {event}')
-    
-    # Extract the 'Animal' slot value from the Lex event
-    animal_slot = event['currentIntent']['slots'].get('Animal', '') if 'currentIntent' in event else ''
-    
-    labels = []
-    if animal_slot:
-        labels.append(animal_slot)
+    q1 = event.get('q', '')  # Extract query from the event
+    print(q1);
 
+    # Validate the query is not empty
+    if not q1.strip():
+        return {
+            'statusCode': 400,  # Bad Request status code
+            "headers": {"Access-Control-Allow-Origin": "*"},
+            'body': json.dumps('Query cannot be empty')
+        }
+
+    labels = get_labels(q1)
     img_paths = get_photo_path(labels) if labels else []
 
     if not img_paths:
-        logger.info('No results found for the labels received.')
-        response_body = 'No Results found'
+        return {
+            'statusCode': 200,
+            "headers": {"Access-Control-Allow-Origin": "*"},
+            'body': json.dumps('No Results found')
+        }
     else:
-        logger.info(f'Image paths found: {img_paths}')
-        response_body = {
-            'imagePaths': img_paths,
-            'userQuery': animal_slot,
-            'labels': labels,
+        return {
+            'statusCode': 200,
+            'headers': {"Access-Control-Allow-Origin": "*"},
+            'body': json.dumps({
+                'imagePaths': img_paths,
+                'userQuery': q1,
+                'labels': labels,
+            }),
+            'isBase64Encoded': False
         }
 
-    return {
-        'statusCode': 200,
-        "headers": {"Access-Control-Allow-Origin": "*"},
-        'body': json.dumps(response_body),
-        'isBase64Encoded': False
-    }
+def get_labels(query):
+    # Generate a random userID for the Lex session
+    sample_string = 'pqrstuvwxyabdsfbc'
+    userid = ''.join(random.choice(sample_string) for x in range(8))
+    
+    try:
+        # Post text to Lex bot to get the response
+        response = lex.post_text(
+            botName='photobot',  # Replace with your actual bot name
+            botAlias='fversn',  # Replace with your actual bot alias
+            userId=userid,
+            inputText=query
+        )
+        
+        logger.info(f"Lex response: {response}")
+        
+        # Extracting the 'Animal' slot value if it exists in the response
+        labels = []
+        if 'slots' in response:
+            animal_slot = response['slots'].get('Animal', None)
+            if animal_slot:
+                labels.append(animal_slot)
+        
+        return labels
 
-# Remove the get_labels function since it is no longer needed.
+    except lex.exceptions.DependencyFailedException as e:
+        # Specific exception for DependencyFailedException from AWS Lex
+        logger.error(f"Lex DependencyFailedException: {str(e)}")
+        # You may want to implement specific logic here, such as a retry or a fallback procedure
+        return []
+        
+    except Exception as e:
+        # General exception for any other errors that may occur
+        logger.error(f"Error posting text to Lex bot: {str(e)}", exc_info=True)
+        # You can handle general exceptions or perform some cleanup here if necessary
+        return []  # Return an empty list in case of any error
 
 def get_photo_path(keys):
-    host = 'search-photos-uxtdbraw4w3bibpqjm4lypa6x4.us-east-1.es.amazonaws.com'
-    try:
-        s = Elasticsearch(
-            hosts=[{'host': host, 'port': 443}],
-            http_auth=('adi-photos', 'Pass@word1'),
-            use_ssl=True,
-            verify_certs=True,
-            connection_class=RequestsHttpConnection
-        )
+    host = "search-photos-uxtdbraw4w3bibpqjm4lypa6x4.us-east-1.es.amazonaws.com"  # Replace with your actual domain endpoint
+    http_auth = ('adi-photos', 'Pass@word1')
+    
+    es = Elasticsearch(
+        hosts=[{'host': host, 'port': 443}],
+        http_auth=http_auth,
+        use_ssl=True,
+        verify_certs=True,
+        connection_class=RequestsHttpConnection
+    )
 
-        resp = []
-        for key in keys:
-            searchData = s.search(index="photos", body={"query": {"match": {"labels": key}}})
-            resp.append(searchData)
-            logger.info(f'Search results for "{key}": {searchData}')
-
-        output = []
-        for r in resp:
-            hits = r.get('hits', {}).get('hits', [])
-            for val in hits:
-                object_key = val['_source'].get('objectKey', '')
-                if object_key and object_key not in output:
-                    output.append(f's3://photos/{object_key}')
-
-        return output
-
-    except Exception as e:
-        logger.error('Error during search in OpenSearch', exc_info=True)
-        return []
-
+    output = []
+    for key in keys:
+        searchData = es.search(index="photos", body={"query": {"match": {"labels": key}}})  # Adjust the index name as necessary
+        for hit in searchData['hits']['hits']:
+            object_key = hit['_source']['objectKey']
+            if object_key not in output:
+                output.append(f's3://photos/{object_key}')  # Adjust your bucket name as necessary
+    
+    return output

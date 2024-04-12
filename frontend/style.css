@@ -1,0 +1,150 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap');
+
+
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-image: url('/Users/anany_gangver/Documents/Cloud_Computing/assignment_3/VisioLex/frontend/image.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2em;
+}
+
+.title-container h1 {
+    color: #f3f3f3;
+    position: absolute;
+    top: 2%; 
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.container {
+    /* Reduced max-width for a smaller container */
+    /* max-width: 600px; 
+    width: 90%; 
+    padding: 1em; 
+    background: rgba(255, 255, 255, 0.8); 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border: 1px solid #007bff;
+    text-align: center;*/
+    /* display: flex;
+    flex-direction: column; */
+    /* position: absolute;  */
+    /* top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%); */
+    width:40vw;
+    /* max-width: 800px; */
+    margin-top: 1em; /* Additional margin to the top if needed */
+    padding: 1em;
+    background: rgba(255, 255, 255, 0.3); /* Set a white background or any color you prefer */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    align-items: center;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1em;
+    width: 80%; /* Adjusted to make the input fields narrower */
+}
+
+.input-field,
+.button {
+    padding: 0.8em; /* Smaller padding for a thinner look */
+    font-size: 0.9em; /* Slightly smaller font size */
+    border: 1px solid #f97c1cc1;
+    background: #fff;
+    color: #333;
+    outline: none;
+    border-radius: 20px; /* Smaller border radius */
+    margin: 0.5em 0;
+    width: 100%; /* Adjusted to make use of the container's width */
+    box-sizing: border-box;
+    transition: transform 0.2s;
+}
+
+
+.container {
+    margin-bottom: 2em;
+     /* Space between the search-upload container and the output container */
+}
+
+/* Additional styles for the output container */
+/* .output-container {
+    align-items: center;
+    width: 70%;
+    max-width: 800px;
+    margin-top: 1em;  
+    padding: 1em;
+    background: #fff;  
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; 
+    
+    
+} */
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+h1 {
+    color: #333;
+    margin-bottom: 0.5em;
+    font-size: 3.5em; 
+    font-weight: 400;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    margin-bottom: 1em;
+    width: 100%; 
+}
+
+
+.input-field:focus,
+.button:hover {
+    transform: scale(1.05); 
+}
+
+.button {
+    cursor: pointer;
+    background: #f97c1cc1; 
+    color: #fff; 
+    box-shadow: 0 4px 6px rgba(255, 88, 88, 0.2);
+    border: none;
+}
+
+.button:hover {
+    background: #e74c3c; 
+}
+
+.or-divider {
+    color: #666;
+    margin: 20px 0;
+}
+
+
+
+
+
+
+
+
+

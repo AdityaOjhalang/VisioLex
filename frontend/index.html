@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>VisioLex</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="title-container">
+        <h1>VisioLex</h1>
+    </div>
+    <div class="main-container">
+        <!-- Container for search and upload fields -->
+        <div class="container">
+            <div class="search-upload-container">
+                <div class="input-group">
+                    <input type="text" id="search-query" placeholder="Search for images..." class="input-field">
+                    <button id="searchButton" class="button">Search</button>
+                </div>
+                <div class="input-group">
+                    <input type="file" id="photo-upload" class="input-field">
+                    <input type="text" id="customLabels" placeholder="Custom labels, comma separated" class="input-field">
+                    <button id="uploadButton" class="button">Upload</button>
+                </div>
+            </div>
+        </div>
+        <!-- Separate container for output -->
+        <div class="output-container" id="resultsContainer">
+
+            
+            <img src="/Users/anany_gangver/Documents/Cloud_Computing/assignment_3/VisioLex/frontend/dog.jpg" alt="Descriptive text for the image" width="400" height="250">
+                <!-- Content for results goes here -->
+            
+            
+            <!-- Content for results goes here -->
+        </div>
+    </div>
+    <script src="app.js"></script> <!-- Link to your JavaScript file -->
+</body>
+</html>
