@@ -54,6 +54,33 @@ function searchPhoto() {
         .catch(function (result) {
         });
 }
+//     apigClient
+//         .searchGet(params, body, additionalParams)
+//         .then(function (res) {
+//             var resp_data = res.data;
+//             console.log(resp_data)
+//             if (resp_data.imagePaths == "No Results found") {
+//                 document.getElementById('displaytext').innerHTML =
+//                     'Sorry could not find the image. Try another search words!';
+//                 document.getElementById('displaytext').style.display = 'block';
+//             }
+
+
+//             resp_data.imagePaths.forEach(function (obj) {
+//                 var img = new Image();
+//                 console.log(obj);
+//                 img.src = obj;
+//                 img.setAttribute('class', 'banner-img');
+//                 img.setAttribute('alt', 'effy');
+//                 document.getElementById('displaytext').innerHTML =
+//                     'Images returned are : ';
+//                 document.getElementById('img-container').appendChild(img);
+//                 document.getElementById('displaytext').style.display = 'block';
+//             });
+//         })
+//         .catch(function (result) {
+//         });
+// }
 
 function getBase64(file) {
     return new Promise((resolve, reject) => {
@@ -91,7 +118,7 @@ function uploadPhoto() {
                 "Access-Control-Allow-Origin": "*", // Required for CORS support to work
                 "Access-Control-Allow-Credentials": true, // Required for cookies, authorization headers with HTTPS
               },
-            "folder": "ass-b2"
+            "folder": "hw3-b2photos"
         };
         console.log(note_customtag.value)
         var additionalParams = {};
