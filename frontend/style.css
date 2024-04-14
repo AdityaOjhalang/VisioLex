@@ -1,109 +1,103 @@
-/* General body styling */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+/* General reset and base styles */
+* {
+  box-sizing: border-box;
   margin: 0;
-  padding: 20px;
-  color: #333;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
-/* Container for centering the content */
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 20px;
+}
+
 .container {
-  width: 80%;
-  margin: auto;
-  overflow: hidden;
+  max-width: 800px;
+  margin: 0 auto;
   padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-/* Card styling for sections */
-.card {
-  background: #fff;
-  margin: 20px 0;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Heading styles */
 .heading h1 {
-  color: #333;
   text-align: center;
+  color: #333;
+  margin-bottom: 20px;
 }
 
-/* Search bar styling */
-.searchbar {
-  display: flex;
-  margin-top: 20px;
+.card {
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
 }
 
-.searchbar-wrapper {
-  width: 100%;
-  display: flex;
-}
-
-.searchbar-left,
-.searchbar-right {
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.searchbar-center {
-  flex-grow: 1;
-}
-
-.searchbar-input {
+input[type="text"],
+input[type="file"] {
   width: 100%;
   padding: 10px;
+  margin: 10px 0;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 4px;
 }
 
-/* Button styling */
-.btn {
-  background-color: #007bff;
-  color: white;
+input[type="text"].form-control {
+  display: block;
+  width: calc(100% - 22px); /* Accounting for padding and border */
+}
+
+input[type="text"].custom-label-input {
+  margin-bottom: 20px;
+}
+
+button.btn {
+  background-color: #007BFF;
+  color: #ffffff;
   border: none;
   padding: 10px 20px;
-  border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
 }
 
-.btn:hover {
+button.btn:hover {
   background-color: #0056b3;
 }
 
-/* Drop box styling */
-.drop_box {
+label.btn {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
   text-align: center;
-  padding: 20px;
-  border: 2px dashed #007bff;
-  border-radius: 5px;
-  background-color: #f9f9f9;
+  display: inline-block;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.drop_box header {
-  margin-bottom: 15px;
+label.btn:hover {
+  background-color: #1e7e34;
 }
 
-.drop_box p {
-  margin-top: 5px;
-  color: #666;
-}
-
-/* Banner section styling */
 .banner-section {
+  background-color: #e9ecef;
   padding: 20px;
-  background-color: #eee;
-  border-radius: 5px;
+  margin-top: 20px;
   text-align: center;
 }
 
-.banner-section p {
+.upload_box, .searchbar-input {
+  text-align: center;
+  padding: 10px;
+}
+
+header h4 {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
   color: #666;
+  margin-bottom: 20px;
 }
