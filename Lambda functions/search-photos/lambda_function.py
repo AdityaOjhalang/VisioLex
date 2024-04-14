@@ -11,7 +11,8 @@ region = 'us-east-1'
 lex = boto3.client('lex-runtime', region_name=region)
 
 def lambda_handler(event, context):
-    q1 = event.get('q', '')  # Extract query from the event
+    q1 = event['queryStringParameters']['q'] if event.get('queryStringParameters') else ''
+
     print(q1);
 
     # Validate the query is not empty
@@ -98,6 +99,5 @@ def get_photo_path(keys):
         for hit in searchData['hits']['hits']:
             object_key = hit['_source']['objectKey']
             if object_key not in output:
-                output.append(f's3://photos/{object_key}')  # Adjust your bucket name as necessary
-    
+                output.append(f'https://ass-b2.s3.amazonaws.com/{object_key}')  # Adjust your bucket name as necessary
     return output

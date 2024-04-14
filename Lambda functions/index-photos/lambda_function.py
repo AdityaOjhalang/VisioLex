@@ -41,7 +41,6 @@ def lambda_handler(event, context):
         print(f"Detected labels for {photo_id}: {custom_labels}")
         print(f"Time taken for Rekognition to detect labels: {rekognition_time_taken:.2f} seconds")
         
-        
         user_labels = s3_clientobj['Metadata'].get('customlabels')
         if user_labels:
             custom_labels.extend(user_labels.split(','))
