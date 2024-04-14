@@ -7,7 +7,9 @@
 }
 
 body {
-  background-color: #f4f4f4;
+  background-image: url('VisioLex.jpg'); /* Adjust path as necessary */
+  background-size: cover;
+  background-position: center;
   color: #333;
   font-size: 16px;
   line-height: 1.6;
@@ -18,7 +20,7 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent */
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
@@ -28,32 +30,41 @@ body {
   margin-bottom: 20px;
 }
 
+/* Corrected vertical space between the two cards */
+.card + .card {
+  margin-top: 40px; /* More appropriate space */
+}
+
 .card {
+  max-width: 500px; /* set a max-width for cards if needed */
+  margin-left: auto; /* center the card */
+  margin-right: auto; /* center the card */
   margin-bottom: 20px;
   padding: 20px;
-  background-color: #fff;
-  border: 1px solid #ddd;
+  background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent */
+  border: 1px solid #ddd; /* Subtle outline */
 }
 
 input[type="text"],
 input[type="file"] {
-  width: 100%;
+  width: 70%; /* Adjusted width */
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px auto; /* Center the input */
+  display: block;
   border: 1px solid #ccc;
   border-radius: 4px;
+  
 }
 
 input[type="text"].form-control {
-  display: block;
-  width: calc(100% - 22px); /* Accounting for padding and border */
+  width: calc(70% - 22px); /* Adjust width accounting for padding and border, centered */
 }
 
 input[type="text"].custom-label-input {
   margin-bottom: 20px;
 }
 
-button.btn {
+button.btn, label.btn {
   background-color: #007BFF;
   color: #ffffff;
   border: none;
@@ -63,24 +74,19 @@ button.btn {
   text-transform: uppercase;
   font-size: 14px;
   transition: background-color 0.3s ease;
+  margin: 10px auto; /* Center the button */
+  display: block;
+  width: auto; /* Ensure the button size is determined by its content */
 }
 
-button.btn:hover {
+button.btn:hover, label.btn:hover {
   background-color: #0056b3;
 }
 
 label.btn {
   background-color: #28a745;
   color: white;
-  padding: 10px 20px;
-  text-align: center;
-  display: inline-block;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-label.btn:hover {
-  background-color: #1e7e34;
+  padding: 10px 20px; /* Padding adjusted for uniformity */
 }
 
 .banner-section {
@@ -94,6 +100,21 @@ label.btn:hover {
   text-align: center;
   padding: 10px;
 }
+
+#img-container {
+  display: flex; /* Use flexbox to align children */
+  justify-content: center; /* Center children horizontally */
+  align-items: center; /* Center children vertically */
+  flex-wrap: wrap; /* Allow items to wrap as needed */
+  gap: 20px; /* Space between the images */
+}
+
+#img-container img {
+  max-width: 400px; /* Set a fixed maximum width for all images */
+  height: auto; /* Maintain aspect ratio */
+  object-fit: cover; /* Cover the area without stretching the image */
+}
+
 
 header h4 {
   padding-bottom: 10px;
