@@ -1,108 +1,109 @@
 /* General body styling */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    color: #333;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 20px;
+  color: #333;
 }
 
 /* Container for centering the content */
 .container {
-    width: 80%;
-    margin: auto;
-    overflow: hidden;
-    padding: 20px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%;
+  margin: auto;
+  overflow: hidden;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Card styling for sections */
 .card {
-    background: #fff;
-    margin: 20px 0;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Heading styles */
 .heading h1 {
-    color: #333;
-    text-align: center;
+  color: #333;
+  text-align: center;
 }
 
 /* Search bar styling */
 .searchbar {
-    display: flex;
-    margin-top: 20px;
+  display: flex;
+  margin-top: 20px;
 }
 
 .searchbar-wrapper {
-    width: 100%;
-    display: flex;
+  width: 100%;
+  display: flex;
 }
 
-.searchbar-left, .searchbar-right {
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.searchbar-left,
+.searchbar-right {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .searchbar-center {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .searchbar-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
 }
 
 /* Button styling */
 .btn {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .btn:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 /* Drop box styling */
 .drop_box {
-    text-align: center;
-    padding: 20px;
-    border: 2px dashed #007BFF;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+  text-align: center;
+  padding: 20px;
+  border: 2px dashed #007bff;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
 
 .drop_box header {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .drop_box p {
-    margin-top: 5px;
-    color: #666;
+  margin-top: 5px;
+  color: #666;
 }
 
 /* Banner section styling */
 .banner-section {
-    padding: 20px;
-    background-color: #eee;
-    border-radius: 5px;
-    text-align: center;
+  padding: 20px;
+  background-color: #eee;
+  border-radius: 5px;
+  text-align: center;
 }
 
 .banner-section p {
-    color: #666;
+  color: #666;
 }
