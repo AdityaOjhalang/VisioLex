@@ -71,47 +71,44 @@ function getBase64(file) {
 }
 
 function uploadPhoto() {
-  // var file = document.getElementById('file_path').files[0];
+  //var file = document.getElementById('file_path').files[0];  // Ensure the file input element ID is correctly specified
   console.log(file);
   const reader = new FileReader();
   document.getElementById("upload_button").innerHTML = "Uploading...";
   document.getElementById("upload_button").style.backgroundColor = "#005af0";
-  var file_data;
-  var encoded_image = getBase64(file).then((data) => {
+  getBase64(file).then((data) => {
     var apigClient = apigClientFactory.newClient();
+    var note_customtag = document.getElementById("note_customtag").value; // Make sure to grab the value from the input
 
-    var file_type = file.type + ";base64";
-    console.log(file_type);
     var body = data;
     var params = {
       object: file.name,
-      "x-amz-meta-customLabels": note_customtag.value,
+      'x-amz-meta-customLabels': note_customtag, // Adding custom labels in metadata
       headers: {
+        "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*", // Required for CORS support to work
         "Access-Control-Allow-Credentials": true, // Required for cookies, authorization headers with HTTPS
       },
-      folder: "ass-b2",
+      folder: "ass-b2"
     };
-    console.log(note_customtag.value);
+
     var additionalParams = {};
     apigClient
       .uploadPut(params, body, additionalParams)
       .then(function (res) {
         if (res.status == 200) {
-          document.getElementById("upload_button").innerHTML =
-            "Upload succeeded";
-          document.getElementById("upload_button").style.backgroundColor =
-            "#499C55";
+          document.getElementById("upload_button").innerHTML = "Upload succeeded";
+          document.getElementById("upload_button").style.backgroundColor = "#499C55";
           console.log(res["data"]);
         }
       })
       .catch(() => {
         document.getElementById("upload_button").innerHTML = "Upload failed";
-        document.getElementById("upload_button").style.backgroundColor =
-          "#F54234";
+        document.getElementById("upload_button").style.backgroundColor = "#F54234";
       });
   });
 }
+
 
 const dropArea = document.querySelector(".drop_box"),
   button = dropArea.querySelector("button"),
