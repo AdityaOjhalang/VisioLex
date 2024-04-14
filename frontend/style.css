@@ -66,7 +66,7 @@ input[type="text"].custom-label-input {
 }
 
 button.btn, label.btn {
-  background-color: #007BFF;
+  background-image: linear-gradient(to bottom right, #007BFF, #0056b3); /* Gradient from lighter to darker blue */
   color: #ffffff;
   border: none;
   padding: 10px 20px;
@@ -74,21 +74,24 @@ button.btn, label.btn {
   border-radius: 4px;
   text-transform: uppercase;
   font-size: 14px;
-  transition: background-color 0.3s ease;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
   margin: 10px auto; /* Center the button */
   display: block;
   width: auto; /* Ensure the button size is determined by its content */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Transition for background and shadow */
 }
 
 button.btn:hover, label.btn:hover {
-  background-color: #0056b3;
+  background-image: linear-gradient(to bottom right, #0056b3, #004080); /* Darker gradient for hover */
+  box-shadow: 0 0 8px rgba(0,0,0,0.3); /* Increased shadow on hover for a 'lifting' effect */
 }
 
 label.btn {
-  background-color: #28a745;
+  background-image: linear-gradient(to bottom right, #28a745, #1c6c30); /* Green gradient for special label buttons */
   color: white;
   padding: 10px 20px; /* Padding adjusted for uniformity */
 }
+
 
 .banner-section {
   background-color: #e9ecef;
