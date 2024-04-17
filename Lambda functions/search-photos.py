@@ -83,7 +83,7 @@ def get_labels(query):
 
 def get_photo_path(keys):
     host = "search-photos-uxtdbraw4w3bibpqjm4lypa6x4.us-east-1.es.amazonaws.com"  # Replace with your actual domain endpoint
-    http_auth = ('*********', '*********')
+    http_auth = ('*******', '*********')
     
     es = Elasticsearch(
         hosts=[{'host': host, 'port': 443}],
